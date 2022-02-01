@@ -1,0 +1,23 @@
+<h1>User</h1>
+<p>
+    Username: <b><%= @user.username %></b>
+</p>
+<p>
+    Email: <b><%= @user.email %></b>
+</p>
+<br><br>
+<% @user.articles.each do |article| %>
+    <p>
+        Article: <b><%= article.title %></b>
+    </p>
+    <p>
+        Description: <b><%= article.description %></b>
+    </p>
+    <p>
+        Created: <b><%= time_ago_in_words(article.created_at) %></b> ago.
+    </p>
+    <p>
+        Edited: <b><%= time_ago_in_words(article.updated_at) %></b> ago.
+    </p>
+    <br><br>
+<% end %>
