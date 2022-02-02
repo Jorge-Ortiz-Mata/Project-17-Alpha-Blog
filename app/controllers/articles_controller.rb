@@ -59,7 +59,7 @@ class ArticlesController < ApplicationController
         end
 
         def require_same_user
-            if current_user != @article.user
+            if !current_user.admin? && (current_user != @article.user)
                 redirect_to articles_path, notice: "This article doesn't belong to you."
             end
         end

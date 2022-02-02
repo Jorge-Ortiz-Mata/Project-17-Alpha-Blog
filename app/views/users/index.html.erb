@@ -5,7 +5,7 @@
     <p>User: <b><%= user.username %></b><br>
        Articles: <b><%= user.articles.length %></b><br>
         <%= link_to "Show user", user_path(user) %> 
-        <% if logged_in? && user == current_user %>
+        <% if logged_in? && (user == current_user || current_user.admin?) %>
             <%= link_to "Edit user", edit_user_path(user) %>
             <%= link_to "Cancel account", user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %><br>
         <% end %>

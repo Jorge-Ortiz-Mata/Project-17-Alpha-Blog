@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        session[:user_id] = nil
+        session[:user_id] = nil if (current_user == @user)
         @user.destroy
         redirect_to users_path, notice: "Account and articles are deleted."
     end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
         end
 
         def same_user
-            if current_user != @user
+            if !current_user.admin? && (current_user != @user)
             redirect_to users_path, notice: "You are not allowed to do this."
             end
         end
