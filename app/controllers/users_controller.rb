@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     def destroy
         session[:user_id] = nil if (current_user == @user) # <--- This line will not be execute if the admin delte a user. It keeps the session open.
         @user.destroy
-        redirect_to users_path, notice: "Account and articles are deleted."
+        redirect_to users_path, status: :see_other
     end
 
     # ------------------------------------------------------------------------------------------------------

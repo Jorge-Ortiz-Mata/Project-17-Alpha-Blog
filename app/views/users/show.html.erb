@@ -1,23 +1,31 @@
 <h1>User</h1>
-<p>
-    Username: <b><%= @user.username %></b>
-</p>
-<p>
-    Email: <b><%= @user.email %></b>
-</p>
-<br><br>
-<% @user.articles.each do |article| %>
-    <p>
-        Article: <b><%= article.title %></b>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <p class="card-title">
+        Username: <b><%= @user.username %></b>
     </p>
-    <p>
-        Description: <b><%= article.description %></b>
+    <p class="card-subtitle mb-2 text-muted">
+        Email: <b><%= @user.email %></b>
     </p>
-    <p>
-        Created: <b><%= time_ago_in_words(article.created_at) %></b> ago.
-    </p>
-    <p>
-        Edited: <b><%= time_ago_in_words(article.updated_at) %></b> ago.
-    </p>
+    <% if logged_in? && (@user == current_user || current_user.admin?) %>
+        <%= link_to "Edit user", edit_user_path(@user), class:"card-link" %>
+        <%= link_to "Cancel account", user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"card-link" %><br>
+    <% end %>
     <br><br>
-<% end %>
+    <% @user.articles.each do |article| %>
+        <p class="card-subtitle mb-2 text-muted">
+            Article: <b><%= article.title %></b>
+        </p>
+        <p class="card-text">
+            Description: <b><%= article.description %></b>
+        </p>
+        <p class="card-text">
+            Created: <b><%= time_ago_in_words(article.created_at) %></b> ago.
+        </p>
+        <p class="card-text">
+            Edited: <b><%= time_ago_in_words(article.updated_at) %></b> ago.
+        </p>
+        <br><br>
+    <% end %>
+    </div>
+</div>

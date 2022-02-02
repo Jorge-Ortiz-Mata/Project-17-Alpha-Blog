@@ -3,7 +3,7 @@
         <h2><%= pluralize(obj.errors.count, "error") %> prohibited this <%= obj.class.name.downcase %> from being saved:</h2>
         <ul>
             <% obj.errors.each do |error| %>
-                <li>Fuck you! <%= error.full_message %></li>
+                <li><%= error.full_message %></li>
             <% end %>
         </ul>
     </div>

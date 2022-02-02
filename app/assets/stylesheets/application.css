@@ -15,6 +15,22 @@
  */
 
 
-.mainClass {
-    padding: 20px;
+
+ul, li{
+    list-style: none;
+}
+
+.home{
+    border: 2px solid #000000;
+    background-image: url(backf2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: soft-light;
+    background-color: #000000cb;
+    color: #ffffff;
+    height: 600px;
+    text-align: center;
+    padding: 30px;
 }

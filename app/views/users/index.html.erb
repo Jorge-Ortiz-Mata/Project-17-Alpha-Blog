@@ -1,14 +1,26 @@
-<h1>Users</h1>
+<h1>Users: </h1>
 
 <% @users.each do |user| %>
     <br>
-    <p>User: <b><%= user.username %></b><br>
-       Articles: <b><%= user.articles.length %></b><br>
-        <%= link_to "Show user", user_path(user) %> 
-        <% if logged_in? && (user == current_user || current_user.admin?) %>
-            <%= link_to "Edit user", edit_user_path(user) %>
-            <%= link_to "Cancel account", user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %><br>
-        <% end %>
-        Joined: <b><%= time_ago_in_words(user.created_at) %></b> ago.
-    <br>
+    <div class="card text-white bg-dark">
+        <div class="card-header">
+            User ID: <b><%= user.id %></b><br>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Username: <b><%= user.username %></b>
+            </h5><br>
+            <p class="card-text">
+                Email: <b><%= user.email %></b><br>
+                Articles by: <b><%= user.articles.length %></b><br>
+                Joined: <b><%= time_ago_in_words(user.created_at) %></b> ago.
+            </p>
+            <div>
+                <%= link_to "Show user", user_path(user), class:"btn btn-primary" %> 
+            </div>
+        </div>
+    </div>
 <% end %>
+
+
+ 
