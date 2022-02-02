@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
     def destroy
         # @article = Article.find(params[:id]) <--- We delete this because it repeats several times. We create a method inside of private section.
         @article.destroy
-        redirect_to articles_path, notice: "Article deleted."
+        redirect_to articles_path, status: :see_other
     end
 
     # ------------------------------------------------------------------------------------------------------

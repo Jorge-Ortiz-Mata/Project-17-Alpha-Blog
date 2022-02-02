@@ -1,3 +1,14 @@
 <h1>Show article</h1>
-<%= @article.title %><br>
-<%= @article.description %><br>
+<br>
+<div class="card" style="width: 18rem;">
+    <br>
+    <div class="card-body">
+    <h5 class="card-title">Title: <%= @article.title %><h5>
+    <p class="card-text">Description: <%= @article.description %></p>
+    <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+        <%= link_to "Edit", edit_article_path(@article), class:"btn btn-primary" %>
+        <%= link_to "Delete", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"btn btn-danger" %>
+    <% end %>
+  </div>
+  <br>
+</div>
