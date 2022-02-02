@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+  # --------------------------------- ROOT path. ---------------------------------------
+
   root 'pages#home'
+
+  # --------------------------------- ARTICLE routes. ---------------------------------------
 
   resources :articles
 
@@ -11,13 +15,15 @@ Rails.application.routes.draw do
   # get  'articles/:id/edit',   to: 'articles#edit'
   # put  'articles/:id',        to: 'articles#update'
 
+  # --------------------------------- USERS routes. ---------------------------------------
+
   resources :users, except: [:new]
   get 'signup', to: 'users#new'
+
+  # --------------------------------- SESSIONS routes. ---------------------------------------
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get "logout", to: "sessions#destroy"
-
-
 
 end
