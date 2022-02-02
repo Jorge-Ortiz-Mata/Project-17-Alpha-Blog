@@ -23,11 +23,12 @@ class ApplicationController < ActionController::Base
 
     # -------------------------------------- require_user method. -----------------------------------
 
-    def require_user
 =begin
     This method will be execute when the user tries to create, edit, update or destroy an article.
     If the user is not logged_in, he will be redirect to login path.
 =end
+
+    def require_user
         if !logged_in?
             redirect_to login_path, notice: "You should login first."
         end
