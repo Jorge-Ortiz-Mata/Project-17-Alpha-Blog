@@ -7,11 +7,19 @@
           <%= link_to "Users", users_path, class:"nav-link active" %>
         </li>
         <li class="nav-item">
+          <%= link_to "Categories.", categories_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Articles", articles_path, class:"nav-link active" %>
         </li>
       </ul>
       <% if logged_in? %>
       <ul class="d-flex navbar-nav mb-2 mb-lg-0">
+        <% if current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to "New category", new_category_path, method: :delete, class:"nav-link active" %>
+            </li>
+        <% end %>
           <li class="nav-item">
             <%= link_to "New Article", new_article_path, class:"nav-link active" %>
           </li>
