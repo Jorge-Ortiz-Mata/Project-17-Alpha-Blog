@@ -11,6 +11,7 @@ class Article < ApplicationRecord
     # ------------------------------ ASOCIATIONS Section. -----------------------------------
 
     belongs_to :user
-
+    has_many :article_categories
+    has_many :categories, through: :article_categories
     # ---------------------------------------------------------------------------------------
 end
