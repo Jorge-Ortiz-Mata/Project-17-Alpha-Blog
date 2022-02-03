@@ -32,7 +32,9 @@ class CategoriesController < ApplicationController
         end
 
         def require_admin
-            if !(logged_in? && current_user.admin?)
+            if !(logged_in?)
+                redirect_to login_path, notice: "You must be login."
+            elsif !(logged_in? && current_user.admin?)
                 redirect_to categories_path, notice: "Only admins can add categories."
             end
         end

@@ -12,6 +12,12 @@
                 <h5 class="card-title">
                     Título: <b><%= article.title %></b>
                 </h5>
+                <% if article.categories.exists? %>
+                    <p class="card-text">
+                        Categories:<br>
+                        <%= render article.categories %>
+                    </p>
+                <% end %>
                 <p class="card-text">
                     Description: <b><%= article.description %></b><br><br>
                     Created by: <b><%= article.user.username %></b>

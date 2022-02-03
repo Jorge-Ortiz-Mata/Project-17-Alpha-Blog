@@ -1,1 +1,31 @@
 <h1>Category: <%= @category.name %></h1>
+<div>
+    <% @category.articles.each do |article| %>
+
+
+    <div class="card text-white bg-dark">
+            <div class="card-header">
+                Article ID: <b><%= article.id %></b><br>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    Título: <b><%= article.title %></b>
+                </h5>
+                <p class="card-text">
+                    Categories:<br>
+                    <%= render article.categories %>
+                </p>
+                <p class="card-text">
+                    Description: <b><%= article.description %></b><br><br>
+                    Created by: <b><%= article.user.username %></b>
+                </p>
+                <div>
+                    <%= link_to "Show", article_path(article), class:"btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+    <% end %>
+</div>
