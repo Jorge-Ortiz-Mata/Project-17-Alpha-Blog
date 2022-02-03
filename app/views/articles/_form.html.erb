@@ -11,6 +11,10 @@
             <%= form.text_area :description, class:"form-control" %>
         </p>
         <p>
+            <%= form.label "Make your selection (you can select more than one option): ", class:"form-label" %>
+            <%= form.collection_select(:category_ids, Category.all, :id, :name, { prompt: 'Other'}, { multiple: true, size: 2, class:'form-select'} ) %>
+        </p>
+        <p>
             <%= form.submit class:"btn btn-success" %>
         </p>
     <% end %>

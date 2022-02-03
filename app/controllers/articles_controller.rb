@@ -83,7 +83,7 @@ class ArticlesController < ApplicationController
         end
 
         def params_article # <-- Method with all the article params.
-            params.require(:article).permit(:title, :description)
+            params.require(:article).permit(:title, :description, category_ids: [])
         end
 
         def require_same_user # <---- It requires a user in order to edit, update or destroy a user.
