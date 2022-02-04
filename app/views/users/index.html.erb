@@ -9,7 +9,11 @@
         <div class="card-body">
             <h5 class="card-title">
                 Username: <b><%= user.username %></b>
-            </h5><br>
+            </h5>
+            <p>
+                <%= pluralize(user.articles.count, 'articles') %>
+            </p>
+            <br>
             <p class="card-text">
                 Email: <b><%= user.email %></b><br>
                 Articles by: <b><%= user.articles.length %></b><br>

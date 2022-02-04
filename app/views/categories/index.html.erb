@@ -13,10 +13,14 @@
                     Título: <span><%= category.name %></span>
                 </h5>
                 <p class="card-text">
-                    Created by: <b><%= time_ago_in_words(category.created_at) %></b><br><br>
+                    Created by: <b><%= time_ago_in_words(category.created_at) %></b><br>
                 </p>
+                <p>
+                    <%= pluralize(category.articles.count, 'articles') %>
+                </p>
+                <br>
                 <div>
-                    <%= link_to "Show", article_path(category), class:"btn btn-primary" %>
+                    <%= link_to "Show", category_path(category), class:"btn btn-primary" %>
                 </div>
             </div>
         </div>

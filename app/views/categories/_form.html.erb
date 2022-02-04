@@ -1,0 +1,9 @@
+<%= form_with model: @category do |form| %>
+    <p>
+        <%= form.label "Category name:", class:"form-label" %>
+        <%= form.text_field :name, class:"form-control" %>
+    </p>
+    <p>
+        <%= form.submit class:"btn btn-success" %>
+    </p>
+<% end %>

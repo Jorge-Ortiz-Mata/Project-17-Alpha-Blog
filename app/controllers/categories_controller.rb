@@ -1,6 +1,11 @@
 class CategoriesController < ApplicationController
 
+    # ---------------------------------------------> CATEGORIES CONTROLLER. <--------------------------------------------------
+
+    # --------------------------------------------- BEFORE ACTIONS sections. --------------------------------------------------
+
     before_action :require_admin, except: [:index, :show]
+    before_action :found_category, only: [:show, :edit, :update]
 
     def index
         @categories = Category.paginate(page: params[:page], per_page: 3) # <-- Pagination cinfiguration. 3 is the amount of objects displayed in the views.
@@ -8,7 +13,7 @@ class CategoriesController < ApplicationController
 
 
     def show
-        @category = Category.find(params[:id])
+        # @category = Category.find(params[:id])
     end
 
 
@@ -26,9 +31,28 @@ class CategoriesController < ApplicationController
         end
     end
 
+    def edit
+        # @category = Category.find(params[:id])
+    end
+
+    def update
+        # @category = Category.find(params[:id])
+        
+        if @category.update(category_params)
+            redirect_to @category, notice: "Category update successfully."
+        else
+            render :edti, status: :unprocessable_entity
+        end
+
+    end
+
     private
         def category_params
             params.require(:category).permit(:name)
+        end
+
+        def found_category
+            @category = Category.find(params[:id])
         end
 
         def require_admin

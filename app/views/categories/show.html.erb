@@ -1,4 +1,12 @@
 <h1>Category: <%= @category.name %></h1>
+<p>
+    Articles: <b><%= pluralize(@category.articles.count, 'articles') %></b> pieces.
+</p>
+<% if logged_in? && current_user.admin? %>
+    <div>
+        <%= link_to "Edit category.", edit_category_path(@category) %>
+    </div>
+<% end %>
 <div>
     <% @category.articles.each do |article| %>
 
