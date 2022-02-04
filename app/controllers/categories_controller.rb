@@ -32,7 +32,6 @@ class CategoriesController < ApplicationController
     # ------------------------------------------------------------------------------------------------------
     # --------------------------------------------- CREATE. -------------------------------------------------
 
-    
     def create
         @category = Category.new(category_params)
         if @category.save
